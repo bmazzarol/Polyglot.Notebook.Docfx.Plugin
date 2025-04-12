@@ -27,7 +27,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
+        var markdown = builder.ToString();
         await Verify(markdown, extension: "md");
     }
 
@@ -46,7 +46,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
+        var markdown = builder.ToString();
         await Verify(markdown, extension: "md");
     }
 
@@ -65,7 +65,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
+        var markdown = builder.ToString();
         await Verify(markdown, extension: "md");
     }
 
@@ -84,7 +84,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
+        var markdown = builder.ToString();
         await Verify(markdown, extension: "md");
     }
 }
