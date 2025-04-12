@@ -1,7 +1,7 @@
 ﻿#pragma warning disable MA0048
 using System.Text.Json.Serialization;
 
-namespace PolyglotNotebookDocfxPlugin.Models;
+namespace Polyglot.Notebook.Docfx.Plugin.Models;
 
 internal sealed record IpynbFile(IReadOnlyList<Cell> Cells);
 

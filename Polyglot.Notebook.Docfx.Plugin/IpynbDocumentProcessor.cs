@@ -3,9 +3,9 @@ using System.Composition;
 using System.Text.Json;
 using Docfx.Common;
 using Docfx.Plugins;
-using PolyglotNotebookDocfxPlugin.Models;
+using Polyglot.Notebook.Docfx.Plugin.Models;
 
-namespace PolyglotNotebookDocfxPlugin;
+namespace Polyglot.Notebook.Docfx.Plugin;
 
 /// <summary>
 /// Document processor for ipynb files

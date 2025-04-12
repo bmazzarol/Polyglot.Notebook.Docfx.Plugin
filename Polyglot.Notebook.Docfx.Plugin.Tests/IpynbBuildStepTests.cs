@@ -1,8 +1,8 @@
 using System.Text;
 using System.Text.Json;
-using PolyglotNotebookDocfxPlugin.Models;
+using Polyglot.Notebook.Docfx.Plugin.Models;
 
-namespace PolyglotNotebookDocfxPlugin.Tests;
+namespace Polyglot.Notebook.Docfx.Plugin.Tests;
 
 public sealed class IpynbBuildStepTests
 {
@@ -27,7 +27,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString();
+        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
         await Verify(markdown, extension: "md");
     }
 
@@ -46,7 +46,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString();
+        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
         await Verify(markdown, extension: "md");
     }
 
@@ -65,7 +65,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString();
+        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
         await Verify(markdown, extension: "md");
     }
 
@@ -84,7 +84,7 @@ public sealed class IpynbBuildStepTests
         var builder = new StringBuilder();
         IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
 
-        var markdown = builder.ToString();
+        var markdown = builder.ToString().Replace("\r\n", "\n", StringComparison.Ordinal);
         await Verify(markdown, extension: "md");
     }
 }

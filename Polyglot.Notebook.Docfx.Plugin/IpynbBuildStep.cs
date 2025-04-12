@@ -2,13 +2,13 @@
 using System.Composition;
 using System.Text;
 using Docfx.Plugins;
-using PolyglotNotebookDocfxPlugin.Extensions;
-using PolyglotNotebookDocfxPlugin.Models;
+using Polyglot.Notebook.Docfx.Plugin.Extensions;
+using Polyglot.Notebook.Docfx.Plugin.Models;
 
-namespace PolyglotNotebookDocfxPlugin;
+namespace Polyglot.Notebook.Docfx.Plugin;
 
 /// <summary>
-/// Build step to convert ipynb files to html.\
+/// Build step to convert ipynb files to html
 /// </summary>
 [Export(nameof(IpynbDocumentProcessor), typeof(IDocumentBuildStep))]
 public sealed class IpynbBuildStep : IDocumentBuildStep

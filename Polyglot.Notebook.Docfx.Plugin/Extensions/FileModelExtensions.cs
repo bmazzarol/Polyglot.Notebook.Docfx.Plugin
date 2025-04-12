@@ -1,6 +1,6 @@
 ﻿using Docfx.Plugins;
 
-namespace PolyglotNotebookDocfxPlugin.Extensions;
+namespace Polyglot.Notebook.Docfx.Plugin.Extensions;
 
 internal static class FileModelExtensions
 {
