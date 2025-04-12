@@ -39,15 +39,20 @@ public sealed class IpynbBuildStep : IDocumentBuildStep
         WriteMarkdownContent(sb, notebookModel);
 
         // convert the md content to html
-        var htmlContent = host.Markup(sb.ToString(), model.FileAndType);
+        var result = host.Markup(sb.ToString(), model.FileAndType);
 
         model.Content = new FileModelDetails(
             (FileModelDetails)model.Content,
             StringComparer.Ordinal
         )
         {
-            ["conceptual"] = htmlContent.Html,
+            ["conceptual"] = result.Html,
         };
+        model.LinkToFiles = result.LinkToFiles.ToImmutableHashSet();
+        model.LinkToUids = result.LinkToUids;
+        model.FileLinkSources = result.FileLinkSources;
+        model.UidLinkSources = result.UidLinkSources;
+        model.Properties.XrefSpec = null;
     }
 
     internal static void WriteMarkdownContent(StringBuilder sb, IpynbFile notebookModel)
