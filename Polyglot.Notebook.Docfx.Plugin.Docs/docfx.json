@@ -1,0 +1,35 @@
+{
+    "metadata": [],
+    "build": {
+        "content": [
+            {
+                "files": [
+                    "toc.yml",
+                    "index.ipynb"
+                ]
+            }
+        ],
+        "resource": [
+            {
+                "files": [
+                    "images/**"
+                ]
+            }
+        ],
+        "postProcessors": [
+            "ExtractSearchIndex"
+        ],
+        "template": [
+            "template",
+            "default",
+            "modern"
+        ],
+        "output": "_site",
+        "globalMetadata": {
+            "_appName": "Polyglot Notebook Docfx Plugin",
+            "_appLogoPath": "images/notebook-icon.png",
+            "_appFaviconPath": "images/favicon.ico",
+            "_appFooter": "Created By <a href='https://github.com/bmazzarol' target='blank'>Ben Mazzarol</a>"
+        }
+    }
+}

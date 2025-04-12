@@ -1,0 +1,39 @@
+{
+    "tasks": [
+        {
+            "name": "Format C# Code",
+            "command": "dotnet",
+            "args": [
+                "csharpier",
+                "."
+            ]
+        },
+        {
+            "name": "Lint Markdown",
+            "command": "npx",
+            "args": [
+                "markdownlint-cli2",
+                "Polyglot.Notebook.Docfx*/**/*.md",
+                "Polyglot.Notebook.Docfx.Docs/**/*.md",
+                "*.md",
+                "!LICENSE.md",
+                "!Polyglot.Notebook.Docfx.Plugin.Tests*/**/*.md"
+            ]
+        },
+        {
+            "name": "Test C# Code",
+            "command": "dotnet",
+            "args": [
+                "test"
+            ]
+        },
+        {
+            "name": "Lint Docs",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "Polyglot.Notebook.Docfx.Plugin.Docs/Polyglot.Notebook.Docfx.Plugin.Docs.csproj"
+            ]
+        }
+    ]
+}
