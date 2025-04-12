@@ -7,6 +7,9 @@ using PolyglotNotebookDocfxPlugin.Models;
 
 namespace PolyglotNotebookDocfxPlugin;
 
+/// <summary>
+/// Document processor for ipynb files
+/// </summary>
 [Export(typeof(IDocumentProcessor))]
 public sealed class IpynbDocumentProcessor : IDocumentProcessor
 {
@@ -16,14 +19,20 @@ public sealed class IpynbDocumentProcessor : IDocumentProcessor
         PropertyNameCaseInsensitive = false,
     };
 
+    /// <inheritdoc />
     public string Name => nameof(IpynbDocumentProcessor);
 
+    /// <inheritdoc />
     [ImportMany(nameof(IpynbDocumentProcessor))]
     public IEnumerable<IDocumentBuildStep>? BuildSteps { get; set; }
 
+    /// <inheritdoc />
     public ProcessingPriority GetProcessingPriority(FileAndType file)
     {
-        if (file.Type == DocumentType.Article && file.File.EndsWith(".ipynb"))
+        if (
+            file.Type == DocumentType.Article
+            && file.File.EndsWith(".ipynb", StringComparison.Ordinal)
+        )
         {
             return ProcessingPriority.Normal;
         }
@@ -31,6 +40,7 @@ public sealed class IpynbDocumentProcessor : IDocumentProcessor
         return ProcessingPriority.NotSupported;
     }
 
+    /// <inheritdoc />
     public FileModel Load(FileAndType file, ImmutableDictionary<string, object> metadata)
     {
         using var stream = new FileStream(
@@ -56,6 +66,7 @@ public sealed class IpynbDocumentProcessor : IDocumentProcessor
         return new FileModel(file, content) { LocalPathFromRoot = localPathFromRoot };
     }
 
+    /// <inheritdoc />
     public SaveResult Save(FileModel model)
     {
         return new SaveResult
@@ -65,5 +76,6 @@ public sealed class IpynbDocumentProcessor : IDocumentProcessor
         };
     }
 
+    /// <inheritdoc />
     public void UpdateHref(FileModel model, IDocumentBuildContext context) { }
 }

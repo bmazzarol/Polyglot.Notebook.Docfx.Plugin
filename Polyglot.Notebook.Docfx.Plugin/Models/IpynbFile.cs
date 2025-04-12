@@ -1,15 +1,18 @@
-﻿using System.Text.Json.Serialization;
+﻿#pragma warning disable MA0048
+using System.Text.Json.Serialization;
 
 namespace PolyglotNotebookDocfxPlugin.Models;
 
-public sealed record Cell(
+internal sealed record IpynbFile(IReadOnlyList<Cell> Cells);
+
+internal sealed record Cell(
     [property: JsonPropertyName("cell_type")] string Type,
     Metadata? Metadata,
     IReadOnlyList<string> Source,
     IReadOnlyList<CellOutput>? Outputs
 );
 
-public sealed record Metadata(
+internal sealed record Metadata(
     [property: JsonPropertyName("polyglot_notebook")] KernelSpec? KernelSpec,
     [property: JsonPropertyName("dotnet_interactive")] InteractiveSpec? InteractiveSpec
 )
@@ -17,11 +20,11 @@ public sealed record Metadata(
     public string? Language => KernelSpec?.Language ?? InteractiveSpec?.Language;
 };
 
-public sealed record KernelSpec([property: JsonPropertyName("kernelName")] string Language);
+internal sealed record KernelSpec([property: JsonPropertyName("kernelName")] string Language);
 
-public sealed record InteractiveSpec([property: JsonPropertyName("language")] string Language);
+internal sealed record InteractiveSpec([property: JsonPropertyName("language")] string Language);
 
-public sealed record CellOutput(
+internal sealed record CellOutput(
     [property: JsonPropertyName("output_type")] string OutputType,
     IReadOnlyDictionary<string, IReadOnlyList<string>> Data
 );

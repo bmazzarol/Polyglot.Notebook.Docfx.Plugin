@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyglotNotebookDocfxPlugin", "PolyglotNotebookDocfxPlugin\PolyglotNotebookDocfxPlugin.csproj", "{18D97FF4-07A1-4A0E-87AF-BB615AC2197B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyglot.Notebook.Docfx.Plugin", "Polyglot.Notebook.Docfx.Plugin\Polyglot.Notebook.Docfx.Plugin.csproj", "{18D97FF4-07A1-4A0E-87AF-BB615AC2197B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyglotNotebookDocfxPlugin.Tests", "PolyglotNotebookDocfxPlugin.Tests\PolyglotNotebookDocfxPlugin.Tests.csproj", "{F6056E50-1051-48DD-86A0-504CA2A4573F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyglot.Notebook.Docfx.Plugin.Tests", "Polyglot.Notebook.Docfx.Plugin.Tests\Polyglot.Notebook.Docfx.Plugin.Tests.csproj", "{F6056E50-1051-48DD-86A0-504CA2A4573F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

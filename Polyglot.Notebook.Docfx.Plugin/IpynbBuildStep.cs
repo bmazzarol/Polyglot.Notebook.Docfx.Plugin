@@ -7,17 +7,25 @@ using PolyglotNotebookDocfxPlugin.Models;
 
 namespace PolyglotNotebookDocfxPlugin;
 
+/// <summary>
+/// Build step to convert ipynb files to html.\
+/// </summary>
 [Export(nameof(IpynbDocumentProcessor), typeof(IDocumentBuildStep))]
 public sealed class IpynbBuildStep : IDocumentBuildStep
 {
+    /// <inheritdoc />
     public string Name => nameof(IpynbBuildStep);
+
+    /// <inheritdoc />
     public int BuildOrder => 0;
 
+    /// <inheritdoc />
     public IEnumerable<FileModel> Prebuild(ImmutableList<FileModel> models, IHostService host)
     {
         return models;
     }
 
+    /// <inheritdoc />
     public void Build(FileModel model, IHostService host)
     {
         var notebookModel = model.Get<IpynbFile>();
@@ -33,13 +41,16 @@ public sealed class IpynbBuildStep : IDocumentBuildStep
         // convert the md content to html
         var htmlContent = host.Markup(sb.ToString(), model.FileAndType);
 
-        model.Content = new FileModelDetails((FileModelDetails)model.Content)
+        model.Content = new FileModelDetails(
+            (FileModelDetails)model.Content,
+            StringComparer.Ordinal
+        )
         {
-            ["conceptual"] = htmlContent,
+            ["conceptual"] = htmlContent.Html,
         };
     }
 
-    public static void WriteMarkdownContent(StringBuilder sb, IpynbFile notebookModel)
+    internal static void WriteMarkdownContent(StringBuilder sb, IpynbFile notebookModel)
     {
         foreach (var cell in notebookModel.Cells)
         {
@@ -89,7 +100,7 @@ public sealed class IpynbBuildStep : IDocumentBuildStep
             return;
         }
 
-        sb.AppendLine($"```{language}");
+        sb.Append("```").AppendLine(language);
         WriteLines(sb, cell.Source);
         sb.AppendLine("```");
         sb.AppendLine();
@@ -108,7 +119,7 @@ public sealed class IpynbBuildStep : IDocumentBuildStep
 
     private static void WriteCellOutput(StringBuilder sb, CellOutput output)
     {
-        if (output.OutputType != "display_data")
+        if (!string.Equals(output.OutputType, "display_data", StringComparison.Ordinal))
         {
             return;
         }
@@ -129,5 +140,6 @@ public sealed class IpynbBuildStep : IDocumentBuildStep
         }
     }
 
+    /// <inheritdoc />
     public void Postbuild(ImmutableList<FileModel> models, IHostService host) { }
 }
