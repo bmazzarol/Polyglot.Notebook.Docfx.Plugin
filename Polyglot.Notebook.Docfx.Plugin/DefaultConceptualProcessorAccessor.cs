@@ -1,8 +1,10 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using Docfx.Plugins;
 
 namespace Polyglot.Notebook.Docfx.Plugin;
 
+[ExcludeFromCodeCoverage(Justification = "Can only be used within a Docfx execution context.")]
 internal static class DefaultConceptualProcessorAccessor
 {
     public static IDocumentProcessor DocumentProcessor { get; }

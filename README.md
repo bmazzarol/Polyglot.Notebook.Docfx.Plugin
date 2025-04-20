@@ -5,7 +5,7 @@
 
 # Polyglot Notebook Docfx Plugin
 
-[:running: **_Getting Started_**](https://bmazzarol.github.io/Polyglot.Notebook.Docfx.Plugin/articles/getting-started.html)
+[:running: **_Getting Started_**](https://bmazzarol.github.io/Polyglot.Notebook.Docfx.Plugin/getting-started.html)
 |
 [:books: **_Documentation_**](https://bmazzarol.github.io/Polyglot.Notebook.Docfx.Plugin)
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.Composition;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using Docfx.Common;
 using Docfx.DataContracts.Common;
@@ -13,6 +14,7 @@ namespace Polyglot.Notebook.Docfx.Plugin;
 /// Document processor for ipynb files
 /// </summary>
 [Export(typeof(IDocumentProcessor))]
+[ExcludeFromCodeCoverage(Justification = "Can only be used within a Docfx execution context.")]
 public sealed class IpynbDocumentProcessor : IDocumentProcessor
 {
     private readonly string[] _systemKeys =
