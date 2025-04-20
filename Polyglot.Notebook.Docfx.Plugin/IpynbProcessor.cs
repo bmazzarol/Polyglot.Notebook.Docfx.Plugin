@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using Docfx.Common.Git;
 using Docfx.DataContracts.Common;
 using Docfx.Plugins;
@@ -9,6 +10,7 @@ namespace Polyglot.Notebook.Docfx.Plugin;
 
 internal static class IpynbProcessor
 {
+    [ExcludeFromCodeCoverage(Justification = "Can only be used within a Docfx execution context.")]
     internal static FileModelDetails ReadAsConceptual(string file, IpynbFile model)
     {
         var filePath = EnvironmentContext.FileAbstractLayer.GetPhysicalPath(file);

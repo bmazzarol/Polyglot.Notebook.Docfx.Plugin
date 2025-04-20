@@ -21,9 +21,17 @@ Docfx plugin for Polyglot Notebooks :notebook:
 
 ## Why?
 
-Docfx is a great tool for creating documentation, but it lacks support for
-Polyglot Notebooks. This plugin aims to fill that gap by providing a way to
-render Polyglot Notebooks in Docfx.
+[Docfx](https://dotnet.github.io/docfx/)
+is a great tool for creating documentation, but it lacks support for
+[Polyglot Notebooks](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode).
+This plugin aims to fill that gap by providing a way to
+render
+[Polyglot Notebooks](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode)
+in [Docfx](https://dotnet.github.io/docfx/).
+
+Everything 
+[supported by Docfx in markdown files](https://dotnet.github.io/docfx/docs/markdown.html?tabs=linux%2Cdotnet)
+is also supported in Polyglot Notebooks.
 
 ## Attributions
 
