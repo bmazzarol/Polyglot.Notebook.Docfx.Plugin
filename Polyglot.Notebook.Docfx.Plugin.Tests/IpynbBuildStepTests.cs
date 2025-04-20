@@ -25,7 +25,7 @@ public sealed class IpynbBuildStepTests
             ?? throw new InvalidOperationException("Failed to deserialize polyglot notebook file.");
 
         var builder = new StringBuilder();
-        IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
+        IpynbProcessor.WriteMarkdownContent(builder, ipynbFile);
 
         var markdown = builder.ToString();
         await Verify(markdown, extension: "md");
@@ -44,7 +44,7 @@ public sealed class IpynbBuildStepTests
             ?? throw new InvalidOperationException("Failed to deserialize polyglot notebook file.");
 
         var builder = new StringBuilder();
-        IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
+        IpynbProcessor.WriteMarkdownContent(builder, ipynbFile);
 
         var markdown = builder.ToString();
         await Verify(markdown, extension: "md");
@@ -63,7 +63,7 @@ public sealed class IpynbBuildStepTests
             ?? throw new InvalidOperationException("Failed to deserialize polyglot notebook file.");
 
         var builder = new StringBuilder();
-        IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
+        IpynbProcessor.WriteMarkdownContent(builder, ipynbFile);
 
         var markdown = builder.ToString();
         await Verify(markdown, extension: "md");
@@ -82,7 +82,7 @@ public sealed class IpynbBuildStepTests
             ?? throw new InvalidOperationException("Failed to deserialize polyglot notebook file.");
 
         var builder = new StringBuilder();
-        IpynbBuildStep.WriteMarkdownContent(builder, ipynbFile);
+        IpynbProcessor.WriteMarkdownContent(builder, ipynbFile);
 
         var markdown = builder.ToString();
         await Verify(markdown, extension: "md");

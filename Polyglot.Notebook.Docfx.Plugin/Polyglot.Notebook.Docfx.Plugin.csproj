@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Docfx.DataContracts.Common" />
       <PackageReference Include="System.Text.Json" VersionOverride="9.0.2"/>
       <PackageReference Include="Docfx.Common" />
       <PackageReference Include="Docfx.Plugins" />
