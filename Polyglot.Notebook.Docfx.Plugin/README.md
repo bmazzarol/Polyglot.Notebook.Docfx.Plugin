@@ -8,9 +8,10 @@
 
 ## Why?
 
-[Docfx](https://dotnet.github.io/docfx/) 
+[Docfx](https://dotnet.github.io/docfx/)
 is a great tool for creating documentation, but it lacks support for
-[Polyglot Notebooks](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode). 
+[Polyglot Notebooks](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode)
+.
 This plugin aims to fill that gap by providing a way to
 render
 [Polyglot Notebooks](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode)
