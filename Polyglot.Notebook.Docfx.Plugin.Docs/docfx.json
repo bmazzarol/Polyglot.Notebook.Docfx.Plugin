@@ -5,7 +5,8 @@
       {
         "files": [
           "toc.yml",
-          "index.ipynb"
+          "index.ipynb",
+          "getting-started.ipynb"
         ]
       }
     ],

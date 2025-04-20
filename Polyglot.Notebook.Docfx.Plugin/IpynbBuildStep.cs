@@ -1,9 +1,7 @@
 ﻿using System.Collections.Immutable;
 using System.Composition;
-using System.Text;
 using Docfx.Plugins;
-using Polyglot.Notebook.Docfx.Plugin.Extensions;
-using Polyglot.Notebook.Docfx.Plugin.Models;
+using static Polyglot.Notebook.Docfx.Plugin.DefaultConceptualProcessorAccessor;
 
 namespace Polyglot.Notebook.Docfx.Plugin;
 
@@ -17,134 +15,23 @@ public sealed class IpynbBuildStep : IDocumentBuildStep
     public string Name => nameof(IpynbBuildStep);
 
     /// <inheritdoc />
-    public int BuildOrder => 0;
+    public int BuildOrder => BuildStep.BuildOrder;
 
     /// <inheritdoc />
     public IEnumerable<FileModel> Prebuild(ImmutableList<FileModel> models, IHostService host)
     {
-        return models;
+        return BuildStep.Prebuild(models, host);
     }
 
     /// <inheritdoc />
     public void Build(FileModel model, IHostService host)
     {
-        var notebookModel = model.Get<IpynbFile>();
-
-        if (notebookModel == null)
-        {
-            return;
-        }
-
-        var sb = new StringBuilder();
-        WriteMarkdownContent(sb, notebookModel);
-
-        // convert the md content to html
-        var result = host.Markup(sb.ToString(), model.FileAndType);
-
-        model.Content = new FileModelDetails(
-            (FileModelDetails)model.Content,
-            StringComparer.Ordinal
-        )
-        {
-            ["conceptual"] = result.Html,
-        };
-        model.LinkToFiles = result.LinkToFiles.ToImmutableHashSet();
-        model.LinkToUids = result.LinkToUids;
-        model.FileLinkSources = result.FileLinkSources;
-        model.UidLinkSources = result.UidLinkSources;
-        model.Properties.XrefSpec = null;
-    }
-
-    internal static void WriteMarkdownContent(StringBuilder sb, IpynbFile notebookModel)
-    {
-        foreach (var cell in notebookModel.Cells)
-        {
-            WriteCell(sb, cell);
-        }
-    }
-
-    private static void WriteCell(StringBuilder sb, Cell cell)
-    {
-        switch (cell.Type)
-        {
-            case "code":
-            {
-                WriteCode(sb, cell);
-
-                break;
-            }
-            case "markdown":
-            {
-                WriteLines(sb, cell.Source);
-                sb.AppendLine();
-
-                break;
-            }
-        }
-    }
-
-    private static void WriteLines(StringBuilder sb, IReadOnlyList<string> lines)
-    {
-        for (var i = 0; i < lines.Count; i++)
-        {
-            var line = lines[i];
-            sb.Append(line);
-
-            if (i == lines.Count - 1)
-            {
-                sb.AppendLine();
-            }
-        }
-    }
-
-    private static void WriteCode(StringBuilder sb, Cell cell)
-    {
-        var language = cell.Metadata?.Language;
-        if (language == null)
-        {
-            return;
-        }
-
-        sb.Append("```").AppendLine(language);
-        WriteLines(sb, cell.Source);
-        sb.AppendLine("```");
-        sb.AppendLine();
-
-        if (cell.Outputs is null)
-        {
-            return;
-        }
-
-        foreach (var output in cell.Outputs)
-        {
-            WriteCellOutput(sb, output);
-            sb.AppendLine();
-        }
-    }
-
-    private static void WriteCellOutput(StringBuilder sb, CellOutput output)
-    {
-        if (!string.Equals(output.OutputType, "display_data", StringComparison.Ordinal))
-        {
-            return;
-        }
-
-        foreach (var (contentType, lines) in output.Data)
-        {
-            switch (contentType)
-            {
-                case "text/plain":
-                    sb.AppendLine("```");
-                    WriteLines(sb, lines);
-                    sb.AppendLine("```");
-                    break;
-                default:
-                    WriteLines(sb, lines);
-                    break;
-            }
-        }
+        BuildStep.Build(model, host);
     }
 
     /// <inheritdoc />
-    public void Postbuild(ImmutableList<FileModel> models, IHostService host) { }
+    public void Postbuild(ImmutableList<FileModel> models, IHostService host)
+    {
+        BuildStep.Postbuild(models, host);
+    }
 }

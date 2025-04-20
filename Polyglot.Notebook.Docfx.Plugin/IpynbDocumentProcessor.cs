@@ -2,8 +2,10 @@
 using System.Composition;
 using System.Text.Json;
 using Docfx.Common;
+using Docfx.DataContracts.Common;
 using Docfx.Plugins;
 using Polyglot.Notebook.Docfx.Plugin.Models;
+using static Polyglot.Notebook.Docfx.Plugin.DefaultConceptualProcessorAccessor;
 
 namespace Polyglot.Notebook.Docfx.Plugin;
 
@@ -13,6 +15,18 @@ namespace Polyglot.Notebook.Docfx.Plugin;
 [Export(typeof(IDocumentProcessor))]
 public sealed class IpynbDocumentProcessor : IDocumentProcessor
 {
+    private readonly string[] _systemKeys =
+    [
+        "conceptual",
+        "type",
+        "source",
+        "path",
+        "documentation",
+        "title",
+        "rawTitle",
+        "wordCount",
+    ];
+
     private static readonly JsonSerializerOptions Options = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -48,16 +62,19 @@ public sealed class IpynbDocumentProcessor : IDocumentProcessor
             FileMode.Open,
             FileAccess.Read
         );
+
         var ipynbFile =
             JsonSerializer.Deserialize<IpynbFile>(stream, Options)
             ?? throw new InvalidOperationException("Failed to deserialize polyglot notebook file.");
 
-        var content = new FileModelDetails(StringComparer.Ordinal)
+        var content = IpynbProcessor.ReadAsConceptual(file.File, ipynbFile);
+
+        foreach (var (key, value) in metadata.OrderBy(item => item.Key, StringComparer.Ordinal))
         {
-            [nameof(IpynbFile)] = ipynbFile,
-            ["type"] = "Conceptual",
-            ["path"] = file.File,
-        };
+            content[key] = value;
+        }
+        content[Constants.PropertyName.SystemKeys] = _systemKeys;
+
         var localPathFromRoot = PathUtility.MakeRelativePath(
             EnvironmentContext.BaseDirectory,
             EnvironmentContext.FileAbstractLayer.GetPhysicalPath(file.File)
@@ -69,13 +86,12 @@ public sealed class IpynbDocumentProcessor : IDocumentProcessor
     /// <inheritdoc />
     public SaveResult Save(FileModel model)
     {
-        return new SaveResult
-        {
-            DocumentType = "Conceptual",
-            FileWithoutExtension = Path.ChangeExtension(path: model.File, extension: null),
-        };
+        return DocumentProcessor.Save(model);
     }
 
     /// <inheritdoc />
-    public void UpdateHref(FileModel model, IDocumentBuildContext context) { }
+    public void UpdateHref(FileModel model, IDocumentBuildContext context)
+    {
+        DocumentProcessor.UpdateHref(model, context);
+    }
 }
