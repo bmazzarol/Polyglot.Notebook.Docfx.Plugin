@@ -34,6 +34,24 @@ Everything
 [supported by Docfx in markdown files](https://dotnet.github.io/docfx/docs/markdown.html?tabs=linux%2Cdotnet)
 is also supported in Polyglot Notebooks.
 
+### Hiding Cells
+
+If you want to hide cells from displaying in the final output,
+you can use the `hidden-in-docfx` attribute in the cell metadata.
+
+```json
+{
+  "metadata": {
+    "tags": [
+      "hidden-in-docfx"
+    ]
+  }
+}
+```
+
+This allows you to keep cells in your notebook for setup or notebook only
+purposes, but not have them show up in the final docfx output.
+
 ## Attributions
 
 [Icons created by juicy_fish](https://www.flaticon.com/free-icons/construction)

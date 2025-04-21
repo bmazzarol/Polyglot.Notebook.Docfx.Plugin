@@ -31,7 +31,7 @@ internal static class IpynbProcessor
 
     internal static void WriteMarkdownContent(StringBuilder sb, IpynbFile notebookModel)
     {
-        foreach (var cell in notebookModel.Cells)
+        foreach (var cell in notebookModel.Cells.Where(x => x.Metadata?.ShouldHide is not true))
         {
             WriteCell(sb, cell);
         }

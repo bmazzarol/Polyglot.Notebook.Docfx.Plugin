@@ -2,34 +2,6 @@
 
 The `display()` function allows for updating from an async data source.
 
-```csharp
-var title = display("querying...");
-
-var currentDisplay = display("starting...");
-
-async IAsyncEnumerable<string> Items(){
-    for (int i = 0; i < 10; i++){
-        yield return $"item {i}";
-        await Task.Delay(1000);
-    }
-}
-
-await foreach (var item in Items()){
-    currentDisplay.Update(item);
-}
-
-title.Update("done!");
-
-```
-
-```
-done!
-```
-
-```
-item 9
-```
-
 This applies to any custom display output, for example a `IEnumerable` of content.
 
 So in this case we will render an async source of data over and over again, replacing the table output each time.

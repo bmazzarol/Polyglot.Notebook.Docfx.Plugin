@@ -14,10 +14,13 @@ internal sealed record Cell(
 
 internal sealed record Metadata(
     [property: JsonPropertyName("polyglot_notebook")] KernelSpec? KernelSpec,
-    [property: JsonPropertyName("dotnet_interactive")] InteractiveSpec? InteractiveSpec
+    [property: JsonPropertyName("dotnet_interactive")] InteractiveSpec? InteractiveSpec,
+    IReadOnlyList<string>? Tags
 )
 {
     public string? Language => KernelSpec?.Language ?? InteractiveSpec?.Language;
+
+    public bool ShouldHide => Tags?.Contains("hidden-in-docfx", StringComparer.Ordinal) ?? false;
 };
 
 internal sealed record KernelSpec([property: JsonPropertyName("kernelName")] string Language);
