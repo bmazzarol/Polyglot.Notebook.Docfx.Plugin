@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Common.Test.props', '$(MSBuildThisFileDirectory)'))" />
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" VersionOverride="9.0.2" />
     <PackageReference Include="Verify.XunitV3" />
   </ItemGroup>
   <ItemGroup>
