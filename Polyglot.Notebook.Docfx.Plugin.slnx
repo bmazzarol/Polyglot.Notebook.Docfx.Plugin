@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Polyglot.Notebook.Docfx.Plugin.Tests/Polyglot.Notebook.Docfx.Plugin.Tests.csproj" />
+  <Project Path="Polyglot.Notebook.Docfx.Plugin/Polyglot.Notebook.Docfx.Plugin.csproj" />
+</Solution>

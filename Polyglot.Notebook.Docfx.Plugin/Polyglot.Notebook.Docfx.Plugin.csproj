@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Common.Release.props', '$(MSBuildThisFileDirectory)'))" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Title>Polyglot Notebook Docfx Plugin</Title>
     <Description>Plugin for Docfx to allow for importing ipynb files like it is markdown</Description>
     <PackageTags>C#, docfx, polyglott notebook, jupiter</PackageTags>
@@ -14,7 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Docfx.DataContracts.Common" />
-    <PackageReference Include="System.Text.Json" VersionOverride="9.0.2" />
     <PackageReference Include="Docfx.Common" />
     <PackageReference Include="Docfx.Plugins" />
     <PackageReference Include="System.Composition" />
