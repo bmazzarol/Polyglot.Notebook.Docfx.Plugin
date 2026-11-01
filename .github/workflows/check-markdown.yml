@@ -1,4 +1,4 @@
-﻿name: Check Markdown
+name: Check Markdown
 
 on:
   push:
@@ -17,5 +17,4 @@ jobs:
     steps:
       - uses: bmazzarol/bmazzarol/.github/actions/check-markdown@main
         with:
-          targetMdFiles: |
-            "Polyglot.Notebook.Docfx*/**/*.md" "Polyglot.Notebook.Docfx.Plugin.Docs/**/*.md" "*.md" "!LICENSE.md" "!Polyglot.Notebook.Docfx.Plugin.Tests*/**/*.md"
+          targetMdFiles: ${{ vars.MARKDOWN_GLOBS }}
