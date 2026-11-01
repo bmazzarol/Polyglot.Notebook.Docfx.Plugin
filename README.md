@@ -1,23 +1,14 @@
-﻿<!-- markdownlint-disable MD033 MD041 -->
-<div align="center">
+![Polyglot Notebook docfx Plugin](notebook-icon.png)
 
-<img src="notebook-icon.png" alt="Icicle" width="150px"/>
+# Polyglot Notebook docfx Plugin
 
-# Polyglot Notebook Docfx Plugin
+**Notebooks that become documentation.**
 
-[:running: **_Getting Started_**](https://bmazzarol.github.io/Polyglot.Notebook.Docfx.Plugin/getting-started.html)
-|
-[:books: **_Documentation_**](https://bmazzarol.github.io/Polyglot.Notebook.Docfx.Plugin)
+Renders Polyglot Notebook cells as docfx pages, supporting everything docfx markdown supports, and letting you hide setup cells from the output.
 
-[![Nuget](https://img.shields.io/nuget/v/Polyglot.Notebook.Docfx.Plugin)](https://www.nuget.org/packages/Polyglot.Notebook.Docfx.Plugin/)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bmazzarol_Polyglot.Notebook.Docfx.Plugin&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bmazzarol_Polyglot.Notebook.Docfx.Plugin)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bmazzarol_Polyglot.Notebook.Docfx.Plugin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bmazzarol_Polyglot.Notebook.Docfx.Plugin)
-[![CD Build](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/cd-build.yml/badge.svg)](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/cd-build.yml)
-[![Check Markdown](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/check-markdown.yml/badge.svg)](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/check-markdown.yml)
+[![Nuget](https://img.shields.io/nuget/v/Polyglot.Notebook.Docfx.Plugin)](https://www.nuget.org/packages/Polyglot.Notebook.Docfx.Plugin/) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bmazzarol_Polyglot.Notebook.Docfx.Plugin&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bmazzarol_Polyglot.Notebook.Docfx.Plugin) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bmazzarol_Polyglot.Notebook.Docfx.Plugin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bmazzarol_Polyglot.Notebook.Docfx.Plugin) [![CD Build](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/cd-build.yml/badge.svg)](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/cd-build.yml) [![Check Markdown](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/check-markdown.yml/badge.svg)](https://github.com/bmazzarol/Polyglot.Notebook.Docfx.Plugin/actions/workflows/check-markdown.yml)
 
-Docfx plugin for Polyglot Notebooks :notebook:
-
-</div>
+[:running: **_Getting Started_**](https://bmazzarol.github.io/Polyglot.Notebook.Docfx.Plugin/getting-started.html) | [:books: **_Documentation_**](https://bmazzarol.github.io/Polyglot.Notebook.Docfx.Plugin/)
 
 ## Why?
 
